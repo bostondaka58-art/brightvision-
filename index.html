@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bright Vision Multimedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf7f2;
+  --warm: #f2ece0;
+  --ink: #0e0d0b;
+  --ink2: #1c1a16;
+  --orange: #e85d1a;
+  --orange2: #ff7a3d;
+  --muted: #7a7369;
+  --border: rgba(14,13,11,0.1);
+  --border2: rgba(232,93,26,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:rgba(250,247,242,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--ink);cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:600;letter-spacing:.5px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .2s;transform-origin:left;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{font-size:13px;font-weight:700;letter-spacing:.5px;color:#fff;background:var(--ink);padding:11px 26px;border:none;cursor:pointer;border-radius:2px;transition:background .2s;}
+.nav-cta:hover{background:var(--orange);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ── HOME ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:0 0 0 56px;padding-top:80px;overflow:hidden;position:relative;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:60px 60px 60px 0;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:28px;}
+.hero-eyebrow-line{width:32px;height:2px;background:var(--orange);}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(56px,5.5vw,88px);font-weight:900;line-height:1.0;color:var(--ink);margin-bottom:28px;}
+.hero-h1 em{font-style:italic;color:var(--orange);}
+.hero-p{font-size:17px;font-weight:300;color:var(--muted);max-width:420px;line-height:1.85;margin-bottom:44px;}
+.hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.btn-fill{font-size:14px;font-weight:700;letter-spacing:.5px;color:#fff;background:var(--orange);padding:15px 36px;border:none;cursor:pointer;border-radius:2px;transition:all .2s;position:relative;overflow:hidden;}
+.btn-fill::after{content:'';position:absolute;inset:0;background:var(--orange2);transform:translateY(100%);transition:transform .25s;}
+.btn-fill:hover::after{transform:translateY(0);}
+.btn-fill span{position:relative;z-index:1;}
+.btn-outline{font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--ink);background:transparent;border:1.5px solid var(--ink);padding:14px 32px;cursor:pointer;border-radius:2px;transition:all .2s;}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+.hero-right{background:var(--ink2);position:relative;overflow:hidden;}
+.hero-right-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.hero-graphic{position:relative;width:100%;height:100%;}
+/* Animated background shapes */
+.hg-circle{position:absolute;border-radius:50%;opacity:.12;}
+.hg-circle-1{width:420px;height:420px;border:1px solid var(--orange);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse1 4s ease-in-out infinite;}
+.hg-circle-2{width:280px;height:280px;border:1px solid var(--orange);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse1 4s ease-in-out infinite .6s;opacity:.2;}
+.hg-fill{position:absolute;width:160px;height:160px;border-radius:50%;background:var(--orange);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.15;}
+@keyframes pulse1{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.06);}}
+.hg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2;}
+.hg-big{font-family:'Playfair Display',serif;font-size:100px;font-weight:900;color:rgba(255,255,255,0.06);line-height:1;letter-spacing:-4px;}
+.hg-badge{display:inline-flex;flex-direction:column;align-items:center;gap:6px;background:var(--orange);padding:20px 32px;}
+.hg-badge-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#fff;line-height:1;}
+.hg-badge-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);}
+/* Corner tags */
+.hg-tag{position:absolute;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:10px 16px;}
+.hg-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);}
+.hg-tag span{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.hg-tag-1{bottom:48px;left:32px;}
+.hg-tag-2{top:80px;right:32px;}
+
+/* SERVICES STRIP */
+.services-strip{display:flex;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--warm);}
+.sstrip-item{flex:1;padding:28px 32px;border-right:1px solid var(--border);display:flex;align-items:center;gap:14px;cursor:pointer;transition:background .2s;}
+.sstrip-item:last-child{border-right:none;}
+.sstrip-item:hover{background:var(--orange);color:#fff;}
+.sstrip-item:hover .sstrip-title,.sstrip-item:hover .sstrip-icon{color:#fff;}
+.sstrip-icon{font-size:22px;flex-shrink:0;}
+.sstrip-title{font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--ink);}
+
+/* FEATURED WORK */
+.section-wrap{padding:100px 56px;}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.sec-label::before{content:'';display:block;width:28px;height:2px;background:var(--orange);}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(38px,4vw,60px);font-weight:900;line-height:1.05;color:var(--ink);margin-bottom:16px;}
+.sec-h2 em{font-style:italic;color:var(--orange);}
+.sec-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;margin-bottom:60px;}
+
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;}
+.work-card{position:relative;overflow:hidden;cursor:pointer;border-radius:3px;}
+.wc-a{grid-column:span 7;aspect-ratio:16/10;}
+.wc-b{grid-column:span 5;aspect-ratio:4/5;}
+.wc-c{grid-column:span 5;aspect-ratio:4/3;}
+.wc-d{grid-column:span 7;aspect-ratio:16/9;}
+.work-card-bg{position:absolute;inset:0;transition:transform .5s ease;}
+.work-card:hover .work-card-bg{transform:scale(1.04);}
+.wc-bg1{background:linear-gradient(135deg,#1a1208 0%,#2a1e05 50%,#0e0d0b 100%);}
+.wc-bg2{background:linear-gradient(160deg,#0f1218 0%,#1a2030 60%,#080a0e 100%);}
+.wc-bg3{background:linear-gradient(135deg,#180d08 0%,#2e1208 60%,#0e0d0b 100%);}
+.wc-bg4{background:linear-gradient(135deg,#0d1208 0%,#1a2810 60%,#0e0d0b 100%);}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,.85) 0%,transparent 55%);padding:24px;display:flex;flex-direction:column;justify-content:flex-end;}
+.work-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+.work-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;}
+.work-hover{position:absolute;inset:0;background:rgba(232,93,26,.08);border:2px solid var(--orange);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.work-card:hover .work-hover{opacity:1;}
+.work-arrow{width:48px;height:48px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;}
+
+/* WHY US */
+.why-section{padding:100px 56px;background:var(--ink);position:relative;overflow:hidden;}
+.why-section::before{content:'BRIGHT';font-family:'Playfair Display',serif;font-size:220px;font-weight:900;color:rgba(255,255,255,.02);position:absolute;top:50%;left:-20px;transform:translateY(-50%);pointer-events:none;white-space:nowrap;line-height:1;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.why-left .sec-h2{color:#fff;}
+.why-left .sec-sub{color:rgba(255,255,255,.45);}
+.why-nums{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:44px;}
+.why-num-box{background:rgba(255,255,255,.04);padding:28px;border:1px solid rgba(255,255,255,.07);text-align:center;}
+.wn-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--orange);line-height:1;}
+.wn-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:6px;}
+.why-right{display:flex;flex-direction:column;gap:28px;}
+.why-item{display:flex;gap:20px;align-items:flex-start;padding:24px;border:1px solid rgba(255,255,255,.07);transition:border-color .2s;}
+.why-item:hover{border-color:rgba(232,93,26,.4);}
+.why-icon-box{width:44px;height:44px;background:rgba(232,93,26,.12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.why-item-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;}
+.why-item-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.8;}
+
+/* TESTIMONIAL */
+.testi-section{padding:100px 56px;background:var(--warm);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.testi-card{background:var(--cream);padding:36px;border:1px solid var(--border);position:relative;transition:box-shadow .3s;}
+.testi-card:hover{box-shadow:0 12px 40px rgba(232,93,26,.1);}
+.testi-quote{font-family:'Playfair Display',serif;font-size:52px;color:var(--orange);line-height:1;margin-bottom:16px;opacity:.4;}
+.testi-text{font-size:15px;font-weight:300;color:var(--ink);line-height:1.85;margin-bottom:28px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:14px;}
+.testi-avatar{width:42px;height:42px;border-radius:50%;background:var(--ink2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--orange);}
+.testi-name{font-size:14px;font-weight:700;color:var(--ink);}
+.testi-role{font-size:12px;color:var(--muted);}
+
+/* CTA BAND */
+.cta-band{padding:80px 56px;background:var(--orange);display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.cta-band h3{font-family:'Playfair Display',serif;font-size:clamp(32px,3.5vw,52px);font-weight:900;color:#fff;line-height:1.1;}
+.cta-band h3 em{font-style:italic;font-weight:700;opacity:.8;}
+.btn-white{font-size:14px;font-weight:700;letter-spacing:.5px;color:var(--orange);background:#fff;padding:17px 44px;border:none;cursor:pointer;border-radius:2px;transition:all .2s;white-space:nowrap;}
+.btn-white:hover{background:var(--ink);color:#fff;}
+
+/* ── SERVICES PAGE ── */
+.page-hero{padding:150px 56px 80px;position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:56px;right:56px;height:1px;background:var(--border);}
+.ph-accent{position:absolute;top:-60px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,93,26,.07) 0%,transparent 70%);}
+.page-h1{font-family:'Playfair Display',serif;font-size:clamp(56px,6vw,96px);font-weight:900;line-height:1;color:var(--ink);margin-bottom:20px;}
+.page-h1 em{font-style:italic;color:var(--orange);}
+.page-sub{font-size:17px;font-weight:300;color:var(--muted);max-width:520px;}
+
+.srv-full-grid{padding:80px 56px 100px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);}
+.srv-card{background:var(--cream);padding:56px 48px;position:relative;overflow:hidden;cursor:pointer;transition:background .25s;}
+.srv-card:hover{background:var(--ink);}
+.srv-card:hover .srv-title,.srv-card:hover .srv-desc,.srv-card:hover .srv-list li{color:rgba(255,255,255,.85);}
+.srv-card:hover .srv-tag{border-color:rgba(232,93,26,.4);color:var(--orange);}
+.srv-bg-num{font-family:'Playfair Display',serif;font-size:140px;font-weight:900;color:rgba(14,13,11,.04);position:absolute;bottom:-20px;right:20px;line-height:1;pointer-events:none;}
+.srv-card:hover .srv-bg-num{color:rgba(255,255,255,.04);}
+.srv-icon-wrap{width:56px;height:56px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:28px;transition:background .25s,border-color .25s;}
+.srv-card:hover .srv-icon-wrap{border-color:rgba(232,93,26,.5);background:rgba(232,93,26,.1);}
+.srv-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:14px;transition:color .25s;}
+.srv-desc{font-size:15px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:24px;transition:color .25s;}
+.srv-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px;}
+.srv-list li{font-size:13px;font-weight:500;color:var(--ink);transition:color .25s;display:flex;align-items:center;gap:8px;}
+.srv-list li::before{content:'→';color:var(--orange);font-size:12px;}
+.srv-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.srv-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);border:1px solid var(--border2);padding:4px 12px;transition:all .25s;}
+
+.process-wrap{padding:80px 56px 100px;background:var(--warm);}
+.process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative;}
+.process-track::after{content:'';position:absolute;top:26px;left:13%;right:13%;height:1px;background:var(--border);}
+.proc-step{padding:0 20px;position:relative;z-index:1;}
+.proc-dot{width:52px;height:52px;border-radius:50%;border:2px solid var(--border);background:var(--warm);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--orange);margin-bottom:20px;}
+.proc-step.active .proc-dot{background:var(--orange);border-color:var(--orange);color:#fff;}
+.proc-title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.proc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;}
+
+/* ── ABOUT ── */
+.about-split{padding:80px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-img-wrap{position:relative;height:560px;}
+.aimg-main{position:absolute;top:0;left:0;right:80px;bottom:80px;background:linear-gradient(145deg,#1a1208,#2d1e08);border-radius:2px;overflow:hidden;}
+.aimg-main::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");opacity:.5;}
+.aimg-accent{position:absolute;bottom:0;right:0;width:55%;height:55%;background:var(--orange);display:flex;align-items:center;justify-content:center;border-radius:2px;}
+.aimg-inner{text-align:center;color:#fff;}
+.aimg-num{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;line-height:1;}
+.aimg-lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.8;}
+.aimg-logo{position:absolute;top:24px;left:24px;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:rgba(255,255,255,.15);letter-spacing:1px;}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(36px,3.5vw,52px);font-weight:900;line-height:1.1;color:var(--ink);margin-bottom:24px;}
+.about-content h2 em{font-style:italic;color:var(--orange);}
+.about-content p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:18px;}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0;}
+.pill{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 18px;border:1.5px solid var(--border);color:var(--ink);cursor:default;transition:all .2s;}
+.pill:hover{border-color:var(--orange);color:var(--orange);}
+
+.values-wrap{padding:80px 56px 100px;background:var(--warm);}
+.values-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.val-card{padding:36px;background:var(--cream);border:1px solid var(--border);transition:transform .25s,box-shadow .25s;}
+.val-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,13,11,.07);}
+.val-icon{font-size:32px;margin-bottom:18px;}
+.val-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.val-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.85;}
+
+/* ── TEAM ── */
+.team-intro{padding:80px 56px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;}
+.team-intro h2{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:900;color:var(--ink);line-height:1.1;}
+.team-intro h2 em{font-style:italic;color:var(--orange);}
+.team-intro p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;}
+.team-grid{padding:0 56px 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.team-card{border:1px solid var(--border);overflow:hidden;transition:box-shadow .3s,transform .3s;cursor:pointer;}
+.team-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(14,13,11,.1);}
+.tc-photo{aspect-ratio:4/5;position:relative;overflow:hidden;}
+.tc-photo-bg{position:absolute;inset:0;transition:transform .5s;}
+.team-card:hover .tc-photo-bg{transform:scale(1.04);}
+.tc-photo:nth-child(1){background:linear-gradient(160deg,#1e1408 0%,#2e1e08 50%,#0e0d0b 100%);}
+.tc-bg-1{background:linear-gradient(160deg,#1e1408 0%,#2e1e08 50%,#0e0d0b 100%);}
+.tc-bg-2{background:linear-gradient(160deg,#081218 0%,#0a1e30 50%,#0e0d0b 100%);}
+.tc-bg-3{background:linear-gradient(160deg,#180808 0%,#2e1008 50%,#0e0d0b 100%);}
+.tc-bg-4{background:linear-gradient(160deg,#081808 0%,#0a2810 50%,#0e0d0b 100%);}
+.tc-bg-5{background:linear-gradient(160deg,#180d18 0%,#280d28 50%,#0e0d0b 100%);}
+.tc-bg-6{background:linear-gradient(160deg,#181808 0%,#282808 50%,#0e0d0b 100%);}
+.tc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,.7),transparent 50%);}
+.tc-initials{position:absolute;bottom:20px;left:20px;font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:rgba(255,255,255,.15);}
+.tc-orange-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.team-card:hover .tc-orange-bar{transform:scaleX(1);}
+.tc-info{padding:22px 24px 26px;background:var(--cream);}
+.tc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.tc-role{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.tc-bio{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.tc-socials{display:flex;gap:8px;}
+.tc-social{width:30px;height:30px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;}
+.tc-social:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ── CONTACT ── */
+.contact-layout{padding:80px 56px 100px;display:grid;grid-template-columns:5fr 7fr;gap:80px;}
+.contact-side h2{font-family:'Playfair Display',serif;font-size:clamp(32px,3vw,46px);font-weight:900;color:var(--ink);line-height:1.1;margin-bottom:16px;}
+.contact-side h2 em{font-style:italic;color:var(--orange);}
+.contact-side > p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:44px;}
+.c-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:26px;}
+.c-icon{width:44px;height:44px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.c-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:3px;}
+.c-val{font-size:15px;font-weight:400;color:var(--ink);}
+.c-socials{display:flex;gap:10px;margin-top:36px;}
+.c-soc-btn{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--border);padding:8px 16px;cursor:pointer;transition:all .2s;}
+.c-soc-btn:hover{border-color:var(--orange);color:var(--orange);}
+
+.cform{display:flex;flex-direction:column;gap:18px;}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.fg label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg select,.fg textarea{background:var(--warm);border:1.5px solid var(--border);color:var(--ink);padding:13px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:400;outline:none;transition:border-color .2s;resize:none;border-radius:2px;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--orange);}
+.fg select option{background:var(--cream);}
+.form-note{font-size:13px;font-weight:300;color:var(--muted);}
+.form-sent{display:none;padding:18px 22px;background:rgba(232,93,26,.08);border:1.5px solid var(--orange);font-size:14px;font-weight:600;color:var(--orange);border-radius:2px;}
+
+.offices-row{padding:0 56px 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.office-card{padding:36px;border:1.5px solid var(--border);background:var(--warm);transition:border-color .25s;}
+.office-card:hover{border-color:var(--orange);}
+.oc-city{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--ink);margin-bottom:4px;}
+.oc-country{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:18px;}
+.oc-detail{font-size:14px;font-weight:300;color:var(--muted);line-height:1.9;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:64px 56px 32px;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px;}
+.footer-brand-logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;gap:8px;}
+.footer-brand-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);}
+.footer-brand p{font-size:14px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.9;margin-bottom:24px;}
+.footer-socs{display:flex;gap:8px;}
+.footer-soc{width:34px;height:34px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;border-radius:2px;}
+.footer-soc:hover{border-color:var(--orange);color:var(--orange);}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:18px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li{font-size:14px;font-weight:300;color:rgba(255,255,255,.5);cursor:pointer;transition:color .2s;}
+.footer-col ul li:hover{color:var(--orange);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{font-size:13px;font-weight:300;color:rgba(255,255,255,.3);}
+.footer-bottom span{color:var(--orange);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.anim{opacity:0;animation:fadeUp .65s ease forwards;}
+.anim:nth-child(1){animation-delay:.1s;}
+.anim:nth-child(2){animation-delay:.2s;}
+.anim:nth-child(3){animation-delay:.3s;}
+.anim:nth-child(4){animation-delay:.4s;}
+.anim:nth-child(5){animation-delay:.5s;}
+.anim:nth-child(6){animation-delay:.6s;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav{padding:18px 28px;}
+  .hero{grid-template-columns:1fr;padding:100px 28px 0;}
+  .hero-right{min-height:320px;}
+  .section-wrap,.page-hero,.srv-full-grid,.process-wrap,.about-split,.values-wrap,.team-intro,.team-grid,.contact-layout,.offices-row,.cta-band,.footer-grid{padding-left:28px;padding-right:28px;}
+  .team-grid,.srv-full-grid{grid-template-columns:1fr;}
+  .about-split,.why-grid,.contact-layout,.team-intro{grid-template-columns:1fr;gap:40px;}
+  .about-img-wrap{height:280px;}
+  .values-cols,.testi-grid{grid-template-columns:1fr 1fr;}
+  .work-grid{grid-template-columns:1fr 1fr;}
+  .wc-a,.wc-b,.wc-c,.wc-d{grid-column:span 1;aspect-ratio:4/3;}
+  .offices-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  .services-strip{overflow-x:auto;}
+  .cform-row{grid-template-columns:1fr;}
+  .process-track{grid-template-columns:1fr 1fr;gap:36px;}
+  .process-track::after{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="logo.jpeg" alt="logo.png" style="height: 200px;px;width:auto;display:block;">
+    
+  <div class="logo" onclick="showPage('home')"><span class="nav-logo-dot"></span>Bright Vision<span style="color:var(--orange);">.</span></div>
+  <ul class="nav-links">
+    
+  
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+    <li><a onclick="showPage('team')" id="nav-team">Team</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Start a Project</button>
+</nav>
+
+<!-- ═══════ HOME ═══════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow anim"><span class="hero-eyebrow-line"></span> Multimedia Production</div>
+      <h1 class="hero-h1 anim"><br><em> Your Vision</em><br>Our creativity</h1>
+      <p class="hero-p anim">Bright Vision Multimedia is your creative partner for video production, graphic design, web development, and podcast production that tells your story powerfully.</p>
+      <div class="hero-btns anim">
+        <button class="btn-fill" onclick="showPage('services')"><span>Explore Services</span></button>
+        <button class="btn-outline" onclick="showPage('about')">Our Story →</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right">
+  <video 
+    autoplay 
+    muted 
+    loop 
+    style="position:absolute;top: 2px;;left: 4px;;width:100%;height:100%;object-fit:cover;">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+          </div>
+          <div class="hg-badge">
+            <div class="hg-badge-num">10+</div>
+            <div class="hg-badge-label">Years of Vision</div>
+          </div>
+          <div class="hg-tag hg-tag-1"><div class="hg-tag-dot"></div><span>Video · Design · Web · Podcast</span></div>
+          <div class="hg-tag hg-tag-2"><div class="hg-tag-dot"></div><span>Based in Lusaka, ZM</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <div class="sstrip-item" onclick="showPage('services')">
+      <div class="sstrip-icon">🎬</div><div class="sstrip-title">Video Production</div>
+    </div>
+    <div class="sstrip-item" onclick="showPage('services')">
+      <div class="sstrip-icon">🎨</div><div class="sstrip-title">Graphic Design</div>
+    </div>
+    <div class="sstrip-item" onclick="showPage('services')">
+      <div class="sstrip-icon">💻</div><div class="sstrip-title">Web Design & Dev</div>
+    </div>
+    <div class="sstrip-item" onclick="showPage('services')">
+      <div class="sstrip-icon">🎙️</div><div class="sstrip-title">Podcast Production</div>
+    </div>
+  </div>
+
+  <!-- FEATURED WORK -->
+  <section class="section-wrap">
+    <div class="sec-label">Portfolio</div>
+    <h2 class="sec-h2">Featured <em>Work</em></h2>
+    <p class="sec-sub">A taste of the stories we've crafted for brands across Zambia and beyond.</p>
+    <div class="work-grid">
+      <div class="work-card wc-a anim">
+        <div class="work-card-bg wc-bg1"></div>
+        <div class="work-overlay">
+          <div class="work-tag">Video Production</div>
+          <div class="work-title">Zambia National Bank — Brand Campaign Film</div>
+        </div>
+        <div class="work-hover"><div class="work-arrow">→</div></div>
+      </div>
+      <div class="work-card wc-b anim">
+        <div class="work-card-bg wc-bg2"></div>
+        <div class="work-overlay">
+          <div class="work-tag">Graphic Design</div>
+          <div class="work-title">Kika Fashion — Brand Identity</div>
+        </div>
+        <div class="work-hover"><div class="work-arrow">→</div></div>
+      </div>
+      <div class="work-card wc-c anim">
+        <div class="work-card-bg wc-bg3"></div>
+        <div class="work-overlay">
+          <div class="work-tag">Web Design</div>
+          <div class="work-title">CopperLeaf Hotels — Website Redesign</div>
+        </div>
+        <div class="work-hover"><div class="work-arrow">→</div></div>
+      </div>
+      <div class="work-card wc-d anim">
+        <div class="work-card-bg wc-bg4"></div>
+        <div class="work-overlay">
+          <div class="work-tag">Podcast Production</div>
+          <div class="work-title">The Lusaka Business Podcast — Season 3</div>
+        </div>
+        <div class="work-hover"><div class="work-arrow">→</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="sec-label" style="color:var(--orange);">Why Choose Us</div>
+        <h2 class="sec-h2">Creative Power,<br><em>Real Results.</em></h2>
+        <p class="sec-sub">We don't just produce content — we craft communication tools that grow your business.</p>
+        <div class="why-nums">
+          <div class="why-num-box anim"><div class="wn-num">200+</div><div class="wn-label">Projects Done</div></div>
+          <div class="why-num-box anim"><div class="wn-num">10+</div><div class="wn-label">Years Active</div></div>
+          <div class="why-num-box anim"><div class="wn-num">98%</div><div class="wn-label">Satisfaction</div></div>
+          <div class="why-num-box anim"><div class="wn-num">4</div><div class="wn-label">Core Services</div></div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="why-item anim">
+          <div class="why-icon-box">🎯</div>
+          <div><div class="why-item-title">Strategy-First Approach</div><div class="why-item-desc">Every project begins with understanding your audience, goals, and message — not just aesthetics.</div></div>
+        </div>
+        <div class="why-item anim">
+          <div class="why-icon-box">🏠</div>
+          <div><div class="why-item-title">Fully In-House Team</div><div class="why-item-desc">Our designers, videographers, developers, and audio producers all work under one roof for seamless delivery.</div></div>
+        </div>
+        <div class="why-item anim">
+          <div class="why-icon-box">⚡</div>
+          <div><div class="why-item-title">Fast Turnaround</div><div class="why-item-desc">We respect your deadlines. Our streamlined process means faster delivery without sacrificing quality.</div></div>
+        </div>
+        <div class="why-item anim">
+          <div class="why-icon-box">🌍</div>
+          <div><div class="why-item-title">African Roots, Global Standard</div><div class="why-item-desc">We produce work to international standards while staying grounded in authentic African storytelling.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi-section">
+    <div class="sec-label">Client Love</div>
+    <h2 class="sec-h2">What They're <em>Saying</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card anim">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Bright Vision completely transformed how we present our brand. The video they produced for our product launch exceeded every expectation we had.</div>
+        <div class="testi-author"><div class="testi-avatar">TM</div><div><div class="testi-name">Thandiwe Mwila</div><div class="testi-role">Marketing Director, Zanaco</div></div></div>
+      </div>
+      <div class="testi-card anim">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Our new website has been a game-changer. Professional, beautiful, and our enquiries have doubled since launch. Worth every kwacha.</div>
+        <div class="testi-author"><div class="testi-avatar">CB</div><div><div class="testi-name">Charles Banda</div><div class="testi-role">CEO, Lusaka Tech Hub</div></div></div>
+      </div>
+      <div class="testi-card anim">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">They handled our entire podcast production from scratch — sound, branding, editing. We now have one of the top business podcasts in the country.</div>
+        <div class="testi-author"><div class="testi-avatar">NK</div><div><div class="testi-name">Natasha Kasonde</div><div class="testi-role">Host, The Zambia Growth Podcast</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h3>Have a project in mind?<br><em>Let's make it happen.</em></h3>
+    <button class="btn-white" onclick="showPage('contact')">Get a Free Quote →</button>
+  </div>
+
+</div>
+
+<!-- ═══════ SERVICES PAGE ═══════ -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div class="ph-accent"></div>
+    <div class="sec-label anim">What We Offer</div>
+    <h1 class="page-h1 anim">Our <em>Services</em></h1>
+    <p class="page-sub anim">Four specialised disciplines. One seamless creative studio. Built to bring your brand to life across every medium.</p>
+  </div>
+
+  <div class="srv-full-grid">
+    <div class="srv-card anim">
+      <div class="srv-bg-num">01</div>
+      <div class="srv-icon-wrap">🎬</div>
+      <div class="srv-title">Video Production & Editing</div>
+      <div class="srv-desc">From concept to final cut, we produce cinematic, story-driven video content for brands, events, and social media. Our team handles everything in-house — scripting, filming, colour grading, and post-production.</div>
+      <ul class="srv-list">
+        <li>Brand & Corporate Films</li>
+        <li>TV Commercials</li>
+        <li>Event Coverage & Documentaries</li>
+        <li>Social Media Video Content</li>
+        <li>Colour Grading & Post-Production</li>
+      </ul>
+      <div class="srv-tags"><span class="srv-tag">Film</span><span class="srv-tag">Editing</span><span class="srv-tag">Motion</span><span class="srv-tag">Events</span></div>
+    </div>
+
+    <div class="srv-card anim">
+      <div class="srv-bg-num">02</div>
+      <div class="srv-icon-wrap">🎨</div>
+      <div class="srv-title">Graphic Design</div>
+      <div class="srv-desc">We craft visual identities and design assets that communicate your brand's essence at a glance. From logo creation to full brand systems, print materials, and digital content that stands out in every context.</div>
+      <ul class="srv-list">
+        <li>Logo Design & Brand Identity</li>
+        <li>Marketing Materials & Print</li>
+        <li>Social Media Graphics</li>
+        <li>Packaging & Signage Design</li>
+        <li>Presentation & Pitch Decks</li>
+      </ul>
+      <div class="srv-tags"><span class="srv-tag">Branding</span><span class="srv-tag">Print</span><span class="srv-tag">Digital</span><span class="srv-tag">Identity</span></div>
+    </div>
+
+    <div class="srv-card anim">
+      <div class="srv-bg-num">03</div>
+      <div class="srv-icon-wrap">💻</div>
+      <div class="srv-title">Web Design & Development</div>
+      <div class="srv-desc">We design and build modern, fast, mobile-ready websites and web applications that represent your brand beautifully and convert visitors into customers. Every site is custom-built — no templates.</div>
+      <ul class="srv-list">
+        <li>Business & Portfolio Websites</li>
+        <li>E-Commerce Stores</li>
+        <li>Landing Pages & Funnels</li>
+        <li>UI/UX Design & Prototyping</li>
+        <li>Website Maintenance & SEO</li>
+      </ul>
+      <div class="srv-tags"><span class="srv-tag">UI/UX</span><span class="srv-tag">Dev</span><span class="srv-tag">E-Commerce</span><span class="srv-tag">SEO</span></div>
+    </div>
+
+    <div class="srv-card anim">
+      <div class="srv-bg-num">04</div>
+      <div class="srv-icon-wrap">🎙️</div>
+      <div class="srv-title">Podcast & Audio Production</div>
+      <div class="srv-desc">Launch or elevate your podcast with our full-service audio production. We handle recording, editing, sound design, distribution, and branded audio identity — so you can focus entirely on your content.</div>
+      <ul class="srv-list">
+        <li>Studio Recording & Remote Recording</li>
+        <li>Episode Editing & Mastering</li>
+        <li>Podcast Branding & Artwork</li>
+        <li>Multi-Platform Distribution</li>
+        <li>Intro/Outro & Sound Design</li>
+      </ul>
+      <div class="srv-tags"><span class="srv-tag">Audio</span><span class="srv-tag">Podcast</span><span class="srv-tag">Branding</span><span class="srv-tag">Studio</span></div>
+    </div>
+  </div>
+
+  <div class="process-wrap">
+    <div class="sec-label">How We Work</div>
+    <h2 class="sec-h2">Our <em>Process</em></h2>
+    <div class="process-track">
+      <div class="proc-step active">
+        <div class="proc-dot">01</div>
+        <div class="proc-title">Discovery</div>
+        <div class="proc-desc">We learn about your brand, goals, audience, and the results you want to achieve before anything else.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-dot">02</div>
+        <div class="proc-title">Strategy & Concept</div>
+        <div class="proc-desc">Our team develops the creative direction, messaging framework, and visual concept aligned to your brief.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-dot">03</div>
+        <div class="proc-title">Production</div>
+        <div class="proc-desc">Full in-house execution — filming, designing, building, or recording — with milestone updates throughout.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-dot">04</div>
+        <div class="proc-title">Delivery & Support</div>
+        <div class="proc-desc">Final review, revisions, handoff of all assets, and post-launch support to ensure lasting results.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h3>Ready to get started?<br><em>We'd love to hear your idea.</em></h3>
+    <button class="btn-white" onclick="showPage('contact')">Request a Quote →</button>
+  </div>
+</div>
+
+<!-- ═══════ ABOUT PAGE ═══════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="ph-accent"></div>
+    <div class="sec-label anim">Who We Are</div>
+    <h1 class="page-h1 anim">About <em>Bright Vision</em></h1>
+    <p class="page-sub anim">A Lusaka-born creative studio built on passion, precision, and a relentless belief that African stories deserve world-class production.</p>
+  </div>
+
+  <section class="about-split">
+    <div class="about-img-wrap">
+      <div class="aimg-main">
+        <div class="aimg-logo">BRIGHT VISION</div>
+      </div>
+      <div class="aimg-accent">
+        <div class="aimg-inner">
+          <div class="aimg-num">2014</div>
+          <div class="aimg-lbl">Est. Lusaka, ZM</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <h2>A Studio Built on <em>Bright Ideas</em></h2>
+      <p>Bright Vision Multimedia was founded in 2014 with a simple but powerful conviction: every brand has a story worth telling beautifully. What started as a small video production outfit in Lusaka has grown into a full-service multimedia studio trusted by businesses across Zambia and beyond.</p>
+      <p>We are storytellers, designers, builders, and audio creators. Our team brings together a rare blend of artistic talent and strategic thinking — which is why the work we produce doesn't just look great, it performs.</p>
+      <p>From multinational campaigns to grassroots brands finding their voice, we approach every project with the same level of care, craft, and commitment to your vision.</p>
+      <div class="about-pills">
+        <span class="pill">Video Production</span>
+        <span class="pill">Graphic Design</span>
+        <span class="pill">Web Development</span>
+        <span class="pill">Podcast Studio</span>
+        <span class="pill">Brand Strategy</span>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <button class="btn-fill" onclick="showPage('team')"><span>Meet the Team</span></button>
+        <button class="btn-outline" onclick="showPage('contact')">Work With Us</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-wrap">
+    <div class="sec-label">What Drives Us</div>
+    <h2 class="sec-h2">Our <em>Values</em></h2>
+    <div class="values-cols">
+      <div class="val-card anim">
+        <div class="val-icon">🔥</div>
+        <div class="val-title">Creative Courage</div>
+        <div class="val-desc">We don't settle for the safe choice. We push past the predictable to find the idea that truly connects.</div>
+      </div>
+      <div class="val-card anim">
+        <div class="val-icon">🎯</div>
+        <div class="val-title">Strategic Thinking</div>
+        <div class="val-desc">Beautiful work that drives no results isn't enough for us. Every creative decision is rooted in your goals.</div>
+      </div>
+      <div class="val-card anim">
+        <div class="val-icon">🤝</div>
+        <div class="val-title">Client Partnership</div>
+        <div class="val-desc">We treat every client as a long-term partner. Your wins are our wins — we invest in your success.</div>
+      </div>
+      <div class="val-card anim">
+        <div class="val-icon">⚡</div>
+        <div class="val-title">Uncompromising Quality</div>
+        <div class="val-desc">From first draft to final delivery, we sweat every detail. Our standard is one we'd be proud to put our name on.</div>
+      </div>
+      <div class="val-card anim">
+        <div class="val-icon">🌍</div>
+        <div class="val-title">African Identity</div>
+        <div class="val-desc">We are proudly Zambian and deeply Pan-African. Authentic cultural perspective is one of our greatest assets.</div>
+      </div>
+      <div class="val-card anim">
+        <div class="val-icon">🚀</div>
+        <div class="val-title">Always Evolving</div>
+        <div class="val-desc">Technology and trends move fast. We move faster — constantly learning, experimenting, and growing our craft.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section style="padding:80px 56px 100px;background:var(--cream);">
+    <div class="sec-label">Our Journey</div>
+    <h2 class="sec-h2">10 Years of <em>Bright Vision</em></h2>
+    <div style="margin-top:52px;padding-left:32px;border-left:2px solid var(--border2);display:flex;flex-direction:column;gap:44px;">
+      <div class="anim" style="position:relative;">
+        <div style="position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--orange);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--orange);"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--orange);margin-bottom:6px;">2014 — Founded</div>
+        <div style="font-size:15px;font-weight:300;color:var(--muted);">Bright Vision Multimedia launched in Lusaka with two cameras, three passionate creatives, and a dream.</div>
+      </div>
+      <div class="anim" style="position:relative;">
+        <div style="position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--orange);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--orange);"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--orange);margin-bottom:6px;">2016 — Graphic Design Studio</div>
+        <div style="font-size:15px;font-weight:300;color:var(--muted);">Launched our dedicated design division, taking on brand identity and print work for Zambian SMEs.</div>
+      </div>
+      <div class="anim" style="position:relative;">
+        <div style="position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--orange);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--orange);"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--orange);margin-bottom:6px;">2019 — Web & Digital Expansion</div>
+        <div style="font-size:15px;font-weight:300;color:var(--muted);">Added a web design and development arm, building digital experiences for clients across sectors.</div>
+      </div>
+      <div class="anim" style="position:relative;">
+        <div style="position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--orange);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--orange);"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--orange);margin-bottom:6px;">2021 — Podcast Studio Opens</div>
+        <div style="font-size:15px;font-weight:300;color:var(--muted);">Opened Zambia's first dedicated brand podcast studio, helping organisations launch and grow their audio presence.</div>
+      </div>
+      <div class="anim" style="position:relative;">
+        <div style="position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--orange);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--orange);"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--orange);margin-bottom:6px;">2024 — 200+ Projects</div>
+        <div style="font-size:15px;font-weight:300;color:var(--muted);">Hit our 200-project milestone with a team of 14 creatives, working with clients across Zambia, Zimbabwe, and Kenya.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h3>Let's create something<br><em>unforgettable together.</em></h3>
+    <button class="btn-white" onclick="showPage('contact')">Get In Touch →</button>
+  </div>
+</div>
+
+<!-- ═══════ TEAM PAGE ═══════ -->
+<div class="page" id="page-team">
+  <div class="page-hero">
+    <div class="ph-accent"></div>
+    <div class="sec-label anim">The Creatives</div>
+    <h1 class="page-h1 anim">Meet the <em>Team</em></h1>
+    <p class="page-sub anim">we bring your raw ideas to life— producing work that makes Zambia proud.</p>
+  </div>
+
+  <div class="team-intro">
+    <div>
+      <h2>Talent You Can <em>Trust</em></h2>
+    </div>
+    <div>
+      <p>Our team is a carefully assembled group of specialists — each one exceptional in their discipline. No generalists, no outsourcing. Just dedicated creatives who love what they do and show up fully for every project.</p>
+    </div>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card anim">
+      <div class="tc-photo">
+        <img src="Mr Boston .jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">BT</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Boston Tembo </div>
+        <div class="tc-role">Founder & Executive Producer</div>
+        <div class="tc-bio">A visionary filmmaker with over 12 years in production, Bright founded the company on the belief that African brands deserve world-class creative.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">ig</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+
+    <div class="team-card anim">
+      <div class="tc-photo">
+        
+        <img src="bukata.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">BU</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Bukata Uteka</div>
+        <div class="tc-role">Creative Director & Lead Designer</div>
+        <div class="tc-bio">Bukata leads all design work with a sharp eye for brand identity. She has built visual systems for over 80 companies across sub-Saharan Africa.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">ig</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+
+    <div class="team-card anim">
+      
+        <img src="lubinda.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">LN</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Lubinda noyi</div>
+        <div class="tc-role">Director of Photography</div>
+        <div class="tc-bio">Lubinda's cinematic eye and technical mastery produce visually stunning content. His work has been broadcast nationally on Zambia's leading networks.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">ig</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+
+    <div class="team-card anim">
+      <div class="tc-photo">
+        
+        <img src="brian.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">BS</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Brian Simpande</div>
+        <div class="tc-role">Lead Web Developer</div>
+        <div class="tc-bio">Brian builds beautiful, high-performance web experiences. Equally fluent in design and code, she bridges the gap between vision and execution.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">gh</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+
+    <div class="team-card anim">
+      <div class="tc-photo">
+        <img src="martin.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">MM</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Martin Mwale</div>
+        <div class="tc-role">Audio Engineer & Podcast Producer</div>
+        <div class="tc-bio">Martin runs our podcast studio with precision and passion. From raw recordings to polished episodes, his audio work sets the standard in Zambia.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">ig</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+
+    <div class="team-card anim">
+      <div class="tc-photo">
+        <img src="Mr Mazuba.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <div class="tc-overlay"></div>
+        <div class="tc-initials">AM</div>
+        <div class="tc-orange-bar"></div>
+      </div>
+      <div class="tc-info">
+        <div class="tc-name">Annex Mazuba</div>
+        <div class="tc-role">Video Editor & Motion Designer</div>
+        <div class="tc-bio"> Annex transforms raw footage into polished stories. Her editing instincts and motion graphics skills add that extra dimension to every film we make.</div>
+        <div class="tc-socials"><span class="tc-social">in</span><span class="tc-social">ig</span><span class="tc-social">@</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:60px 56px 100px;background:var(--warm);text-align:center;">
+    <div class="sec-label" style="justify-content:center;">Join Us</div>
+    <h2 class="sec-h2" style="text-align:center;">We're Always Looking for <em>Talent</em></h2>
+    <p style="font-size:16px;font-weight:300;color:var(--muted);max-width:500px;margin:0 auto 36px;">If you're a skilled creative who loves storytelling, we'd love to see your work.</p>
+    <button class="btn-fill" onclick="showPage('contact')"><span>Send Your Portfolio →</span></button>
+  </section>
+</div>
+
+<!-- ═══════ CONTACT PAGE ═══════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="ph-accent"></div>
+    <div class="sec-label anim">Let's Talk</div>
+    <h1 class="page-h1 anim">Get In <em>Touch</em></h1>
+    <p class="page-sub anim">Have a project idea? Ready to build something great? Fill in the form or reach out directly — we respond within 24 hours.</p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-side">
+      <h2>Let's Start a <em>Conversation</em></h2>
+      <p>We work with businesses of all sizes — from startups to established brands. No project is too small or too ambitious for us.</p>
+
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div><div class="c-label">Address</div><div class="c-val">Plot 12, Independence Avenue<br>Lusaka, Zambia</div></div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📞</div>
+        <div><div class="c-label">Phone</div><div class="c-val">+260 96 000 0000</div></div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div><div class="c-label">Email</div><div class="c-val">hello@brightvision.co.zm</div></div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">⏰</div>
+        <div><div class="c-label">Hours</div><div class="c-val">Mon – Fri: 08:00 – 18:00<br>Saturday: 09:00 – 13:00</div></div>
+      </div>
+
+      <div class="c-socials">
+        <button class="c-soc-btn">Instagram</button>
+        <button class="c-soc-btn">LinkedIn</button>
+        <button class="c-soc-btn">YouTube</button>
+        <button class="c-soc-btn">Facebook</button>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:8px;">Start a Project</div>
+      <p class="form-note" style="margin-bottom:28px;">Tell us about your project and we'll come back with a tailored proposal.</p>
+
+      <div class="cform">
+        <div class="cform-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="e.g. Thandiwe" id="cf-fname"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="e.g. Mwila" id="cf-lname"></div>
+        </div>
+        <div class="cform-row">
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" id="cf-email"></div>
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+260 96 xxx xxxx"></div>
+        </div>
+        <div class="fg"><label>Company / Organisation</label><input type="text" placeholder="Your company or brand name"></div>
+        <div class="fg">
+          <label>Service Required</label>
+          <select>
+            <option value="">Choose a service...</option>
+            <option>Video Production & Editing</option>
+            <option>Graphic Design</option>
+            <option>Web Design & Development</option>
+            <option>Podcast & Audio Production</option>
+            <option>Multiple Services / Full Package</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Budget Range</label>
+          <select>
+            <option value="">Choose a budget range...</option>
+            <option>Under K5,000</option>
+            <option>K5,000 – K20,000</option>
+            <option>K20,000 – K80,000</option>
+            <option>K80,000 – K200,000</option>
+            <option>K200,000+</option>
+          </select>
+        </div>
+        <div class="fg"><label>Project Details</label><textarea rows="5" placeholder="Describe your project, goals, timeline, and anything else we should know..."></textarea></div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <button class="btn-fill" onclick="submitForm()"><span>Send Message →</span></button>
+          <span class="form-note">We respond within 24 hours.</span>
+        </div>
+        <div class="form-sent" id="formSent">✓ Message sent! We'll be in touch with you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offices-row">
+    <div class="office-card">
+      <div class="oc-city">Lusaka</div>
+      <div class="oc-country">🇿🇲 Zambia — Lusaka Office</div>
+      <div class="oc-detail">Plot 12, Independence Avenue<br>Lusaka, 10101 · Zambia<br><br>+260 772376359<br>hello@brightvision.co.zm</div>
+    </div>
+    <div class="office-card">
+      <div class="oc-city">Ndola</div>
+      <div class="oc-country">🇿🇲 Zambia — Head office Office</div>
+      <div class="oc-detail">Broadway Street, Central Business District<br>Ndola, Zambia<br><br>+260 96 0137820<br>ndola@brightvision.co.zm</div>
+    </div>
+    <div class="office-card">
+      <div class="oc-city">Kitwe</div>
+      <div class="oc-country">🇿🇼 copperbelt — Regional Desk</div>
+      <div class="oc-detail">president Street<br>copperbelt, Zambia<br><br>+260 972594813<br>kitwe@brightvision.co.zm</div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h3>Ready to begin?<br><em>Your vision, our creatvity.</em></h3>
+    <button class="btn-white" onclick="document.querySelector('.cform').scrollIntoView({behavior:'smooth'})">Fill the Form →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-logo" onclick="showPage('home')"><span class="footer-brand-logo-dot"></span>Bright Vision.</div>
+      <p>Ndola's leading multimedia production studio — crafting visual stories through video, design, web, and audio.</p>
+      <div class="footer-socs">
+        <button class="footer-soc">ig</button>
+        <button class="footer-soc">in</button>
+        <button class="footer-soc">yt</button>
+        <button class="footer-soc">fb</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li onclick="showPage('home')">Home</li>
+        <li onclick="showPage('services')">Services</li>
+        <li onclick="showPage('about')">About Us</li>
+        <li onclick="showPage('team')">Our Team</li>
+        <li onclick="showPage('contact')">Contact</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li>Video Production</li>
+        <li>Graphic Design</li>
+        <li>Web Development</li>
+        <li>Podcast Production</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>hello@brightvision.co.zm</li>
+        <li>+260 960137820</li>
+        <li>Independence Ave, Lusaka</li>
+        <li style="color:var(--orange);margin-top:4px;">Mon–Fri 08:00–18:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Bright Vision Multimedia</span>. All rights reserved.</p>
+    <p>Made with <span>♥</span> in copperbelt Ndola, Zambia</p>
+  </div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const navEl = document.getElementById('nav-' + id);
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Re-trigger animations
+  document.querySelectorAll('#page-' + id + ' .anim').forEach(el => {
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = '';
+  });
+}
+
+function submitForm() {
+  const fname = document.getElementById('cf-fname').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  if (!fname || !email) { alert('Please enter your name and email address.'); return; }
+  document.getElementById('formSent').style.display = 'block';
+  setTimeout(() => { document.getElementById('formSent').style.display = 'none'; }, 6000);
+}
+</script>
+</body>
+</html>
