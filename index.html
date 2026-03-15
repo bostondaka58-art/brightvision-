@@ -295,9 +295,24 @@ footer{background:var(--ink);padding:64px 56px 32px;}
 .anim:nth-child(5){animation-delay:.5s;}
 .anim:nth-child(6){animation-delay:.6s;}
 
-/* RESPONSIVE */
+/* HAMBURGER / MOBILE MENU */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:6px;}
+.nav-hamburger span{display:block;width:100%;height:2px;background:var(--ink);border-radius:2px;transition:all .25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:0;padding:80px 32px 40px;}
+.mobile-menu.open{display:flex;}
+.mobile-nav-links{list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;width:100%;margin-bottom:40px;}
+.mobile-nav-links li{width:100%;border-bottom:1px solid var(--border);}
+.mobile-nav-links a{display:block;padding:20px 0;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);text-decoration:none;cursor:pointer;transition:color .2s;}
+.mobile-nav-links a:hover{color:var(--orange);}
+
+/* RESPONSIVE — TABLET */
 @media(max-width:1100px){
   nav{padding:18px 28px;}
+  .nav-hamburger{display:none;}
   .hero{grid-template-columns:1fr;padding:100px 28px 0;}
   .hero-right{min-height:320px;}
   .section-wrap,.page-hero,.srv-full-grid,.process-wrap,.about-split,.values-wrap,.team-intro,.team-grid,.contact-layout,.offices-row,.cta-band,.footer-grid{padding-left:28px;padding-right:28px;}
@@ -313,6 +328,83 @@ footer{background:var(--ink);padding:64px 56px 32px;}
   .cform-row{grid-template-columns:1fr;}
   .process-track{grid-template-columns:1fr 1fr;gap:36px;}
   .process-track::after{display:none;}
+}
+
+/* RESPONSIVE — MOBILE */
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:14px 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-logo{font-size:18px;}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;padding:80px 20px 0;min-height:auto;}
+  .hero-left{padding:40px 0 0;}
+  .hero-right{min-height:260px;}
+  .hero-h1{font-size:clamp(40px,11vw,64px);}
+  .hero-p{font-size:15px;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .btn-fill,.btn-outline{text-align:center;width:100%;}
+
+  /* SERVICES STRIP */
+  .services-strip{flex-wrap:wrap;}
+  .sstrip-item{flex:1 1 calc(50% - 1px);border-right:none;border-bottom:1px solid var(--border);}
+  .sstrip-item:nth-child(odd){border-right:1px solid var(--border);}
+
+  /* SECTION WRAPS */
+  .section-wrap{padding:60px 20px;}
+  .page-hero{padding:120px 20px 60px;}
+  .why-section{padding:60px 20px;}
+  .testi-section{padding:60px 20px;}
+  .cta-band{padding:48px 20px;flex-direction:column;text-align:center;align-items:center;}
+  .btn-white{width:100%;max-width:320px;}
+
+  /* WORK GRID */
+  .work-grid{grid-template-columns:1fr;}
+  .wc-a,.wc-b,.wc-c,.wc-d{grid-column:span 1;aspect-ratio:16/9;}
+  .sec-sub{margin-bottom:36px;}
+
+  /* WHY SECTION */
+  .why-grid{grid-template-columns:1fr;gap:40px;}
+  .why-nums{grid-template-columns:1fr 1fr;}
+
+  /* TESTIMONIALS */
+  .testi-grid{grid-template-columns:1fr;}
+
+  /* SERVICES PAGE */
+  .srv-full-grid{grid-template-columns:1fr;padding:40px 20px 60px;}
+  .srv-card{padding:36px 24px;}
+  .process-wrap{padding:60px 20px;}
+  .process-track{grid-template-columns:1fr;gap:24px;}
+
+  /* ABOUT */
+  .about-split{padding:60px 20px;grid-template-columns:1fr;gap:32px;}
+  .about-img-wrap{height:220px;}
+  .values-wrap{padding:60px 20px 80px;}
+  .values-cols{grid-template-columns:1fr;}
+
+  /* TEAM */
+  .team-intro{padding:60px 20px 40px;grid-template-columns:1fr;gap:20px;}
+  .team-grid{padding:0 20px 60px;grid-template-columns:1fr;}
+
+  /* CONTACT */
+  .contact-layout{padding:60px 20px 80px;grid-template-columns:1fr;gap:48px;}
+  .cform-row{grid-template-columns:1fr;}
+  .offices-row{padding:0 20px 60px;grid-template-columns:1fr;}
+
+  /* FOOTER */
+  footer{padding:48px 20px 24px;}
+  .footer-grid{grid-template-columns:1fr;gap:32px;margin-bottom:36px;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+
+  /* PAGE HERO */
+  .page-h1{font-size:clamp(40px,11vw,64px);}
+  .page-sub{font-size:15px;}
+
+  /* MISC */
+  .why-section::before{font-size:120px;}
+  .aimg-accent{width:50%;height:45%;}
 }
 </style>
 </head>
@@ -333,7 +425,20 @@ footer{background:var(--ink);padding:64px 56px 32px;}
     <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="showPage('contact')">Start a Project</button>
+  <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-nav-links">
+    <li><a onclick="showPage('home');closeMobileMenu()" id="mnav-home">Home</a></li>
+    <li><a onclick="showPage('services');closeMobileMenu()" id="mnav-services">Services</a></li>
+    <li><a onclick="showPage('about');closeMobileMenu()" id="mnav-about">About</a></li>
+    <li><a onclick="showPage('team');closeMobileMenu()" id="mnav-team">Team</a></li>
+    <li><a onclick="showPage('contact');closeMobileMenu()" id="mnav-contact">Contact</a></li>
+  </ul>
+  <button class="btn-fill" onclick="showPage('contact');closeMobileMenu()"><span>Start a Project →</span></button>
+</div>
 
 <!-- ═══════ HOME ═══════ -->
 <div class="page active" id="page-home">
@@ -857,7 +962,7 @@ footer{background:var(--ink);padding:64px 56px 32px;}
       </div>
       <div class="c-item">
         <div class="c-icon">✉️</div>
-        <div><div class="c-label">Email</div><div class="c-val">hello@brightvision.co.zm</div></div>
+        <div><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a121f1616153a1808131d120e0c1309131514541915540017">[email&#160;protected]</a></div></div>
       </div>
       <div class="c-item">
         <div class="c-icon">⏰</div>
@@ -922,17 +1027,17 @@ footer{background:var(--ink);padding:64px 56px 32px;}
     <div class="office-card">
       <div class="oc-city">Lusaka</div>
       <div class="oc-country">🇿🇲 Zambia — Lusaka Office</div>
-      <div class="oc-detail">Plot 12, Independence Avenue<br>Lusaka, 10101 · Zambia<br><br>+260 772376359<br>hello@brightvision.co.zm</div>
+      <div class="oc-detail">Plot 12, Independence Avenue<br>Lusaka, 10101 · Zambia<br><br>+260 772376359<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="355d5059595a7557475c525d41435c465c5a5b1b565a1b4f58">[email&#160;protected]</a></div>
     </div>
     <div class="office-card">
       <div class="oc-city">Ndola</div>
       <div class="oc-country">🇿🇲 Zambia — Head office Office</div>
-      <div class="oc-detail">Broadway Street, Central Business District<br>Ndola, Zambia<br><br>+260 96 0137820<br>ndola@brightvision.co.zm</div>
+      <div class="oc-detail">Broadway Street, Central Business District<br>Ndola, Zambia<br><br>+260 96 0137820<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc929893909dbc9e8e959b94888a958f959392d29f93d28691">[email&#160;protected]</a></div>
     </div>
     <div class="office-card">
       <div class="oc-city">Kitwe</div>
       <div class="oc-country">🇿🇼 copperbelt — Regional Desk</div>
-      <div class="oc-detail">president Street<br>copperbelt, Zambia<br><br>+260 972594813<br>kitwe@brightvision.co.zm</div>
+      <div class="oc-detail">president Street<br>copperbelt, Zambia<br><br>+260 972594813<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="177c7e6360725775657e707f63617e647e7879397478396d7a">[email&#160;protected]</a></div>
     </div>
   </div>
 
@@ -977,7 +1082,7 @@ footer{background:var(--ink);padding:64px 56px 32px;}
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li>hello@brightvision.co.zm</li>
+        <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89e1ece5e5e6c9ebfbe0eee1fdffe0fae0e6e7a7eae6a7f3e4">[email&#160;protected]</a></li>
         <li>+260 960137820</li>
         <li>Independence Ave, Lusaka</li>
         <li style="color:var(--orange);margin-top:4px;">Mon–Fri 08:00–18:00</li>
@@ -990,28 +1095,35 @@ footer{background:var(--ink);padding:64px 56px 32px;}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   const navEl = document.getElementById('nav-' + id);
   if(navEl) navEl.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  // Re-trigger animations
-  document.querySelectorAll('#page-' + id + ' .anim').forEach(el => {
-    el.style.animation = 'none';
-    void el.offsetWidth;
-    el.style.animation = '';
-  });
+  window.scrollTo(0,0);
 }
-
 function submitForm() {
   const fname = document.getElementById('cf-fname').value.trim();
+  const lname = document.getElementById('cf-lname').value.trim();
   const email = document.getElementById('cf-email').value.trim();
-  if (!fname || !email) { alert('Please enter your name and email address.'); return; }
+  if(!fname || !lname || !email) { alert('Please fill in required fields.'); return; }
   document.getElementById('formSent').style.display = 'block';
-  setTimeout(() => { document.getElementById('formSent').style.display = 'none'; }, 6000);
+}
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('navHamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('navHamburger');
+  menu.classList.remove('open');
+  btn.classList.remove('open');
+  document.body.style.overflow = '';
 }
 </script>
 </body>
